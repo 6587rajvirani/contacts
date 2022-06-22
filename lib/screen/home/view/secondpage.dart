@@ -32,7 +32,7 @@ class _second_ScreenState extends State<second_Screen> {
                    mainAxisAlignment: MainAxisAlignment.start,
                    children: [
                     InkWell(onTap: (){
-                      Navigator.pushNamed(context, '/', arguments: l1);
+                      Navigator.pushNamed(context, 'con', arguments: l1);
                     },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
