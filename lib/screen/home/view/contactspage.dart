@@ -30,7 +30,7 @@ class _con_ScreenState extends State<con_Screen> {
             leading: Icon(Icons.account_box_sharp,color: Colors.orange,),
             backgroundColor: Colors.orange,
             centerTitle: false,
-            title: Text("Contacts"),
+            title: Container(margin: EdgeInsets.only(right: 0),child: Text("Contacts")),
             actions: [
               Icon(Icons.more_vert),
             ],
