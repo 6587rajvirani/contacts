@@ -7,7 +7,6 @@ class con_Screen extends StatefulWidget {
   @override
   State<con_Screen> createState() => _con_ScreenState();
 }
-
 class _con_ScreenState extends State<con_Screen> {
 
 
@@ -29,10 +28,27 @@ class _con_ScreenState extends State<con_Screen> {
           appBar: AppBar(
             leading: Icon(Icons.account_box_sharp,color: Colors.orange,),
             backgroundColor: Colors.orange,
-            centerTitle: false,
-            title: Container(margin: EdgeInsets.only(right: 0),child: Text("Contacts")),
+            centerTitle: true,
+            title: Container(child: Text("Contacts")),
             actions: [
-              Icon(Icons.more_vert),
+              PopupMenuButton(itemBuilder: (context){
+                return
+                  [
+                    PopupMenuItem(child: InkWell(onTap: (){
+                      Navigator.pushNamed(context, 'callhistory', arguments: l1);},
+                       child: Text("your city",style: TextStyle(color: Colors.white),)),),
+                    PopupMenuItem(child: InkWell(onTap: (){
+                      Navigator.pushNamed(context, 'setting', arguments: l1);},
+                        child: Text("Settings",style: TextStyle(color: Colors.white),)),),
+                    PopupMenuItem(child: InkWell(onTap: (){
+                      Navigator.pushNamed(context, 'help', arguments: l1);},
+                         child: Text("Help & feedback",style: TextStyle(color: Colors.white),)),
+
+                    ),
+                  ];
+              },icon:Icon(Icons.more_vert),
+                color: Colors.deepOrange,
+              ),
             ],
           ),
           body:Stack(
