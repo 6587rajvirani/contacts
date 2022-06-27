@@ -24,28 +24,32 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: Stack(
-          children: [
-            Container(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        body: Center(
+          child: SingleChildScrollView(
+            child: Stack(
               children: [
-                Center(
-                  child: Icon(Icons.account_circle_sharp,size: 200,color: Colors.orange,),
+                Container(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Icon(Icons.account_circle_sharp,size: 200,color: Colors.orange,),
+                    ),
+                    Text("Contact",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                    SizedBox(height: 90,),
+                    CircularProgressIndicator(
+                      value: i/20,
+                      backgroundColor: Colors.blue.shade100,
+                    ),
+                    SizedBox(height: 5,),
+                    Text("$i%",style: TextStyle(color: Colors.white),),
+                    SizedBox(height: 15,),
+                    Text("Loding",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                  ],
                 ),
-                Text("Contact",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
-                SizedBox(height: 90,),
-                CircularProgressIndicator(
-                  value: i/20,
-                  backgroundColor: Colors.blue.shade100,
-                ),
-                SizedBox(height: 5,),
-                Text("$i%",style: TextStyle(color: Colors.white),),
-                SizedBox(height: 15,),
-                Text("Loding",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
