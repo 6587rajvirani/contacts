@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class second_Screen extends StatefulWidget {
   const second_Screen({Key? key}) : super(key: key);
@@ -76,12 +77,17 @@ class _second_ScreenState extends State<second_Screen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(Icons.mail,color: Colors.white,size: 40,),
                     ),
+
+
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(onTap: (){
-                        Navigator.pushNamed(context, 'call', arguments: l1);
+                        String number = "tel:+ ${l1[2]}";
+                        launchUrl(Uri.parse(number));
                       },child: Icon(Icons.call,color: Colors.white,size: 40,)),
                     ),
+
+
                     Padding(
                       padding: const EdgeInsets.only(right: 8,left: 20),
                       child: Icon(Icons.messenger_outlined,color: Colors.white,size: 40,),
@@ -111,23 +117,26 @@ class _second_ScreenState extends State<second_Screen> {
                           ],
                         ),
                         SizedBox(height: 5,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: InkWell(onTap:(){
-                                Navigator.pushNamed(context, 'call', arguments: l1);
-                              },child: Icon(Icons.call,color: Colors.white,size: 35,)),
-                            ),
-                            SizedBox(width: 15,),
-                            Text("${l1[2]}",style: TextStyle(color: Colors.white,fontSize: 25),),
-                            Expanded(child: Container()),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Moblie",style: TextStyle(color: Colors.white,fontSize: 15),),
-                            ),
-                          ],
+                        InkWell(onTap: (){
+                          String number = "tel:+ ${l1[2]}";
+                          launchUrl(Uri.parse(number));
+                        },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(Icons.call,color: Colors.white,size: 35,),
+                              ),
+                              SizedBox(width: 15,),
+                              Text("${l1[2]}",style: TextStyle(color: Colors.white,fontSize: 25),),
+                              Expanded(child: Container()),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text("Moblie",style: TextStyle(color: Colors.white,fontSize: 15),),
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(height: 5,),
                         Row(
