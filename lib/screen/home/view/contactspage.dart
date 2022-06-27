@@ -34,13 +34,13 @@ class _con_ScreenState extends State<con_Screen> {
                 return
                   [
                     PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context, 'callhistory', arguments: l1);},
+                      Navigator.pushNamed(context,'callhistory', arguments: l1);},
                        child: Text("your city",style: TextStyle(color: Colors.white),)),),
                     PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context, 'setting', arguments: l1);},
+                      Navigator.pushNamed(context,'setting', arguments: l1);},
                         child: Text("Settings",style: TextStyle(color: Colors.white),)),),
                     PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context, 'help', arguments: l1);},
+                      Navigator.pushNamed(context,'help', arguments: l1);},
                          child: Text("Help & feedback",style: TextStyle(color: Colors.white),)),
 
                     ),
