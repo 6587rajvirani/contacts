@@ -37,10 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Text("Contact",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
                     SizedBox(height: 90,),
+
                     CircularProgressIndicator(
                       value: i/20,
                       backgroundColor: Colors.blue.shade100,
                     ),
+
                     SizedBox(height: 5,),
                     Text("$i%",style: TextStyle(color: Colors.white),),
                     SizedBox(height: 15,),

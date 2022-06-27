@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class second_Screen extends StatefulWidget {
@@ -47,7 +48,10 @@ class _second_ScreenState extends State<second_Screen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Icon(Icons.share_outlined,color: Colors.white,size: 25,),
+                      child: InkWell(onTap: ()async{
+                        String data ="${l1[2]}";
+                        await Share.share("$data");
+                      },child: Icon(Icons.share_outlined,color: Colors.white,size: 25,)),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
