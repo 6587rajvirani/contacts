@@ -49,9 +49,10 @@ class _second_ScreenState extends State<second_Screen> {
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: InkWell(onTap: ()async{
-                        String data ="${l1[2]}";
-                        await Share.share("$data");
-                      },child: Icon(Icons.share_outlined,color: Colors.white,size: 25,)),
+                        String data= "${l1[1]}";
+                        String tata= "${l1[2]}";
+                        await Share.share("Name:$data\nNumber:$tata");
+                        },child: Icon(Icons.share_outlined,color: Colors.white,size: 25,)),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
@@ -63,8 +64,6 @@ class _second_ScreenState extends State<second_Screen> {
                     ),
                   ],
                 ),
-
-                // CircleAvatar(backgroundImage: AssetImage("${n1[0]}"))
                 ]
               ),
               Padding(
@@ -86,7 +85,7 @@ class _second_ScreenState extends State<second_Screen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(onTap: (){
-                        String number = "tel:+ ${l1[2]}";
+                        String number = "tel:+91 ${l1[2]}";
                         launchUrl(Uri.parse(number));
                       },child: Icon(Icons.call,color: Colors.white,size: 40,)),
                     ),
@@ -122,7 +121,7 @@ class _second_ScreenState extends State<second_Screen> {
                         ),
                         SizedBox(height: 5,),
                         InkWell(onTap: (){
-                          String number = "tel:+ ${l1[2]}";
+                          String number = "tel:+91 ${l1[2]}";
                           launchUrl(Uri.parse(number));
                         },
                           child: Row(
