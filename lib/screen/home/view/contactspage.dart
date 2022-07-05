@@ -23,7 +23,6 @@ class _con_ScreenState extends State<con_Screen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
           appBar: AppBar(
             leading: Icon(Icons.account_box_sharp,color: Colors.orange,),
             backgroundColor: Colors.orange,
@@ -35,18 +34,21 @@ class _con_ScreenState extends State<con_Screen> {
                   [
                     PopupMenuItem(child: InkWell(onTap: (){
                       Navigator.pushNamed(context,'callhistory', arguments: l1);},
-                       child: Text("your city",style: TextStyle(color: Colors.white),)),),
+                       child: Text("your city",style: TextStyle(color: Colors.black),)),),
                     PopupMenuItem(child: InkWell(onTap: (){
                       Navigator.pushNamed(context,'setting', arguments: l1);},
-                        child: Text("Settings",style: TextStyle(color: Colors.white),)),),
+                        child: Text("Settings",style: TextStyle(color: Colors.black),)),),
                     PopupMenuItem(child: InkWell(onTap: (){
                       Navigator.pushNamed(context,'help', arguments: l1);},
-                         child: Text("Help & feedback",style: TextStyle(color: Colors.white),)),
+                         child: Text("Help & feedback",style: TextStyle(color: Colors.black),)),),
+                    PopupMenuItem(child: InkWell(onTap: (){
+                      Navigator.pushNamed(context,'appMode', arguments: l1);},
+                         child: Text("AppMode",style: TextStyle(color: Colors.black),)),
 
                     ),
                   ];
               },icon:Icon(Icons.more_vert),
-                color: Colors.deepOrange,
+                color: Colors.amberAccent,
               ),
             ],
           ),
@@ -78,7 +80,7 @@ class _con_ScreenState extends State<con_Screen> {
                                 ),
                               ),
                               SizedBox(width: 20,),
-                              Text("${contacts_Name[index]}",style: TextStyle(color: Colors.white,fontSize: 15),),
+                              Text("${contacts_Name[index]}",style: TextStyle(fontSize: 15),),
                             ],
                           ),
                         ),

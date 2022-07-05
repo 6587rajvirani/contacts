@@ -36,7 +36,7 @@ class _Call_ScreenState extends State<Call_Screen> {
                                 borderRadius:BorderRadius.circular(80),
 
                             ),
-                              child: Icon(Icons.call_end,color: Colors.white,size: 50,),
+                              child: Icon(Icons.call_end,size: 50,),
                         ),
                           ),
                         ),
