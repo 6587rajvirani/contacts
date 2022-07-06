@@ -18,14 +18,11 @@ class _call_historyState extends State<call_history> {
     List l1 = ModalRoute.of(context)!.settings.arguments as List;
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
            body: Center(
-
              child: Column(
                children: [
-                 Text("Select Your City",style: TextStyle(color: Colors.white,fontSize: 40),),
+                 Text("Select Your City",style: TextStyle(fontSize: 40),),
                 Container(
-                 color: Colors.white,
                  child: DropdownButton(
                    value: selectcity,
                    onChanged: (value){
@@ -85,7 +82,6 @@ class _call_historyState extends State<call_history> {
                      DropdownMenuItem(child: Text("Bhilai"),value: "Bhilai",),
                      DropdownMenuItem(child: Text("Kochi"),value: "Kochi",),
                    ],
-                   dropdownColor: Colors.white,
                  ),
                ),
              ],

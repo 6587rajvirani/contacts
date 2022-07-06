@@ -13,8 +13,8 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.pushReplacementNamed(context,'con');
       }
     );
-    Timer.periodic(Duration(milliseconds: 500), (timer) {
-      if(i<20)
+    Timer.periodic(Duration(milliseconds: 300), (timer) {
+      if(i<100)
         {
           setState(() {
             i++;
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 90,),
 
                     CircularProgressIndicator(
-                      value: i/20,
+                      value: i/100,
                       backgroundColor: Colors.blue.shade100,
                     ),
 

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class con_Screen extends StatefulWidget {
@@ -23,32 +24,30 @@ class _con_ScreenState extends State<con_Screen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
           appBar: AppBar(
-            leading: Icon(Icons.account_box_sharp,color: Colors.orange,),
-            backgroundColor: Colors.orange,
             centerTitle: true,
-            title: Container(child: Text("Contacts")),
+            title: Container(child: Text("Contacts",style: GoogleFonts.   abel())),
             actions: [
               PopupMenuButton(itemBuilder: (context){
                 return
                   [
                     PopupMenuItem(child: InkWell(onTap: (){
                       Navigator.pushNamed(context,'callhistory', arguments: l1);},
-                       child: Text("your city",style: TextStyle(color: Colors.white),)),),
+                       child: Text("your city")),),
                     PopupMenuItem(child: InkWell(onTap: (){
                       Navigator.pushNamed(context,'setting', arguments: l1);},
-                        child: Text("Settings",style: TextStyle(color: Colors.white),)),),
+                        child: Text("Settings")),),
                     PopupMenuItem(child: InkWell(onTap: (){
                       String link = "https://support.google.com/contacts/answer/9423168?hl=en";
                       Uri url = Uri.parse(link);
                       launchUrl(url);}
-                         ,child: Text("Help & feedback",style: TextStyle(color: Colors.white),)),
+                         ,child: Text("Help & feedback",)),),
+                   PopupMenuItem(child: InkWell(onTap: (){
+                      Navigator.pushNamed(context,'appMode', arguments: l1);},
+                        child: Text("AppMode")),),
 
-                    ),
                   ];
               },icon:Icon(Icons.more_vert),
-                color: Colors.deepOrange,
               ),
             ],
           ),
@@ -80,7 +79,7 @@ class _con_ScreenState extends State<con_Screen> {
                                 ),
                               ),
                               SizedBox(width: 20,),
-                              Text("${contacts_Name[index]}",style: TextStyle(color: Colors.white,fontSize: 15),),
+                              Text("${contacts_Name[index]}",style: TextStyle(fontSize: 15),),
                             ],
                           ),
                         ),
@@ -107,10 +106,9 @@ class _con_ScreenState extends State<con_Screen> {
                               width: 50,
                               alignment: Alignment.center,
                              decoration: BoxDecoration(
-                               color: Colors.orange,
                                borderRadius:BorderRadius.circular(80),
                              ),
-                             child:Icon(Icons.add,size: 50,color: Colors.white,),
+                             child:Icon(Icons.add,size: 50),
                            ),
                          ),
                       ],
