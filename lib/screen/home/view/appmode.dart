@@ -14,6 +14,13 @@ class _app_ModeState extends State<app_Mode> {
     List l1 = ModalRoute.of(context)!.settings.arguments as List;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: InkWell(onTap: (){
+            Navigator.pop(context);
+          },child: Icon(Icons.arrow_back,size: 20)),
+          centerTitle: true,
+          title: Text("Mode"),
+        ),
         body: Center(
           child: Column(
             children: [
