@@ -1,6 +1,9 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class con_Screen extends StatefulWidget {
@@ -10,6 +13,13 @@ class con_Screen extends StatefulWidget {
   State<con_Screen> createState() => _con_ScreenState();
 }
 class _con_ScreenState extends State<con_Screen> {
+
+  TextEditingController txtname = TextEditingController();
+  TextEditingController txtnumber = TextEditingController();
+  File f1 = (File(""));
+
+  String cname = "";
+  String cnumber = "";
 
 
   List l1=[];
@@ -54,7 +64,7 @@ class _con_ScreenState extends State<con_Screen> {
           body:Stack(
             children: [
               ListView.builder(itemCount:contacts_Name.length,
-                  itemBuilder:(context, index){
+                  itemBuilder:(context,index){
                     return Padding(
                       padding: const EdgeInsets.only(right: 8,left: 8,top: 4,bottom: 4),
                       child: Container(
@@ -69,17 +79,22 @@ class _con_ScreenState extends State<con_Screen> {
                     Navigator.pushNamed(context, 'sec', arguments: l1);
                     },
 
-                          child: Row(
+                          child: Column(
                             children: [
-                              Container(
-                                height: 70,
-                                width: 70,
-                                child: CircleAvatar(
-                                  backgroundImage: AssetImage("${contacts_Image[index]}"),
-                                ),
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 70,
+                                    width: 70,
+                                    child: CircleAvatar(
+                                        backgroundImage: FileImage(
+                                            File(contacts_Image[index].toString())),
+                                    ),
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Text("${contacts_Name[index]}",style: TextStyle(fontSize: 15),),
+                                ],
                               ),
-                              SizedBox(width: 20,),
-                              Text("${contacts_Name[index]}",style: TextStyle(fontSize: 15),),
                             ],
                           ),
                         ),
@@ -87,38 +102,105 @@ class _con_ScreenState extends State<con_Screen> {
                     );
                   }
               ),
-              Container(
-                alignment: Alignment.bottomRight,
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                         InkWell(onTap: (){
-                           String link = "https://contacts.google.com/";
-                           Uri url = Uri.parse(link);
-                           launchUrl(url);
-                         },
-                           child: Container(
-                              height: 50,
-                              width: 50,
-                              alignment: Alignment.center,
-                             decoration: BoxDecoration(
-                               borderRadius:BorderRadius.circular(80),
-                             ),
-                             child:Icon(Icons.add,size: 50),
-                           ),
-                         ),
-                      ],
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      dialog();
+                      txtname.clear();
+                      txtnumber.clear();
+                      f1 = File("");
+                    },
+                    child: Icon(Icons.add),
+                  ),
                 ),
-              )
+              ),
             ],
           )
        )
     );
   }
-}
+  void dialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Column(
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  ImagePicker ipick = ImagePicker();
+                  XFile? f2 = await ipick.pickImage(source: ImageSource.gallery);
+
+                  setState(() {
+                    f1 = File(f2!.path);
+                  });
+                },
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  child: CircleAvatar(
+                    backgroundImage: FileImage(f1),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: txtname,
+                decoration: InputDecoration(
+                  label: Text("Name"),
+                  enabledBorder: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                keyboardType: TextInputType.number,
+                controller: txtnumber,
+                decoration: InputDecoration(
+                    label: Text("Mobile Number"),
+                    enabledBorder: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue))),
+              )
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Cancel")),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    cname = txtname.text;
+                    cnumber = txtnumber.text;
+                    contacts_Name.add(cname);
+                    contacts_Namber.add(cnumber);
+                    contacts_Image.add(f1.path);
+                  });
+                  Navigator.pop(context);
+                  snack();
+                },
+                child: Text("Save")),
+          ],
+        );
+      },
+    );
+  }
+
+  void snack() {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text("Contact Saved")));
+     }
+   }
+

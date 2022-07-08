@@ -24,21 +24,21 @@ void main(){
     systemNavigationBarIconBrightness: Brightness.dark
   ));
   ThemeData _dark = ThemeData(
-     primarySwatch: Colors.pink,
-      primaryColor: Colors.amber,
-      accentColor: Colors.blue,
-      brightness: Brightness.dark,
+     primarySwatch: Colors.orange,
+      primaryColor: Colors.orange,
+      accentColor: Colors.orange,
       splashColor: Colors.blue,
       primaryColorDark: Colors.orange,
-      backgroundColor: Colors.green,
-      bottomAppBarColor: Colors.amberAccent
+      backgroundColor: Colors.pink,
+      bottomAppBarColor: Colors.amberAccent,
+      scaffoldBackgroundColor: Colors.amber.shade300,
   );
   ThemeData _light = ThemeData(
-      primarySwatch: Colors.orange,
+      primarySwatch: Colors.blue,
       accentColor: Colors.blue,
-      brightness: Brightness.light,
       splashColor: Colors.orange,
       primaryColorLight: Colors.blue,
+     scaffoldBackgroundColor: Colors.white
 
 
   );
