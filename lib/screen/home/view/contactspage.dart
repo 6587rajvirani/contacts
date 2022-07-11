@@ -42,6 +42,9 @@ class _con_ScreenState extends State<con_Screen> {
                 return
                   [
                     PopupMenuItem(child: InkWell(onTap: (){
+                      Navigator.pushNamed(context,'appcontacts', arguments: l1);},
+                        child: Text("AddContacts")),),
+                    PopupMenuItem(child: InkWell(onTap: (){
                       Navigator.pushNamed(context,'callhistory', arguments: l1);},
                        child: Text("your city")),),
                     PopupMenuItem(child: InkWell(onTap: (){
@@ -87,8 +90,8 @@ class _con_ScreenState extends State<con_Screen> {
                                     height: 70,
                                     width: 70,
                                     child: CircleAvatar(
-                                        backgroundImage: FileImage(
-                                            File(contacts_Image[index].toString())),
+                                        backgroundImage: AssetImage(("${contacts_Image[index]}"),
+                                      ),
                                     ),
                                   ),
                                   SizedBox(width: 20,),
@@ -199,8 +202,7 @@ class _con_ScreenState extends State<con_Screen> {
   }
 
   void snack() {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("Contact Saved")));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Contact Saved")));
      }
    }
 
