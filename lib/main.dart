@@ -60,6 +60,7 @@ void main(){
             'help': (context) => Help_screen(),
             'callhistory': (context) => call_history(),
             'appMode': (context) => app_Mode(),
+            'addcontacts':(context)=>add_contacts(),
 
           },
         );
