@@ -32,97 +32,100 @@ class _con_ScreenState extends State<con_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Container(child: Text("Contacts",style: GoogleFonts.   abel())),
-            actions: [
-              PopupMenuButton(itemBuilder: (context){
-                return
-                  [
-                    PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context,'appcontacts', arguments: l1);},
-                        child: Text("AddContacts")),),
-                    PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context,'callhistory', arguments: l1);},
-                       child: Text("your city")),),
-                    PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context,'setting', arguments: l1);},
-                        child: Text("Settings")),),
-                    PopupMenuItem(child: InkWell(onTap: (){
-                      String link = "https://support.google.com/contacts/answer/9423168?hl=en";
-                      Uri url = Uri.parse(link);
-                      launchUrl(url);}
-                         ,child: Text("Help & feedback",)),),
-                   PopupMenuItem(child: InkWell(onTap: (){
-                      Navigator.pushNamed(context,'appMode', arguments: l1);},
-                        child: Text("AppMode")),),
+    return WillPopScope(
+      onWillPop: () async => true,
+      child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Container(child: Text("Contacts",style: GoogleFonts.content())),
+              actions: [
+                PopupMenuButton(itemBuilder: (context){
+                  return
+                    [
+                      PopupMenuItem(child: InkWell(onTap: (){
+                        Navigator.pushNamed(context,'appcontacts', arguments: l1);},
+                          child: Text("AddContacts")),),
+                      PopupMenuItem(child: InkWell(onTap: (){
+                        Navigator.pushNamed(context,'callhistory', arguments: l1);},
+                         child: Text("your city")),),
+                      PopupMenuItem(child: InkWell(onTap: (){
+                        Navigator.pushNamed(context,'setting', arguments: l1);},
+                          child: Text("Settings")),),
+                      PopupMenuItem(child: InkWell(onTap: (){
+                        String link = "https://support.google.com/contacts/answer/9423168?hl=en";
+                        Uri url = Uri.parse(link);
+                        launchUrl(url);}
+                           ,child: Text("Help & feedback",)),),
+                     PopupMenuItem(child: InkWell(onTap: (){
+                        Navigator.pushNamed(context,'appMode', arguments: l1);},
+                          child: Text("AppMode")),),
 
-                  ];
-              },icon:Icon(Icons.more_vert),
-              ),
-            ],
-          ),
-          body:Stack(
-            children: [
-              ListView.builder(itemCount:contacts_Name.length,
-                  itemBuilder:(context,index){
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 8,left: 8,top: 4,bottom: 4),
-                      child: Container(
-                        height: 80,
-                        child: InkWell(onTap: (){
-                    l1.clear();
-                    l1.add("${contacts_Image[index]}");
-                    l1.add("${contacts_Name[index]}");
-                    l1.add("${contacts_Namber[index]}");
-                    l1.add("${contacts_email[index]}");
-                    l1.add("${contacts_bithofday[index]}");
-                    Navigator.pushNamed(context, 'sec', arguments: l1);
-                    },
+                    ];
+                },icon:Icon(Icons.more_vert),
+                ),
+              ],
+            ),
+            body:Stack(
+              children: [
+                ListView.builder(itemCount:contacts_Name.length,
+                    itemBuilder:(context,index){
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 8,left: 8,top: 4,bottom: 4),
+                        child: Container(
+                          height: 80,
+                          child: InkWell(onTap: (){
+                      l1.clear();
+                      l1.add("${contacts_Image[index]}");
+                      l1.add("${contacts_Name[index]}");
+                      l1.add("${contacts_Namber[index]}");
+                      l1.add("${contacts_email[index]}");
+                      l1.add("${contacts_bithofday[index]}");
+                      Navigator.pushNamed(context, 'sec', arguments: l1);
+                      },
 
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    height: 70,
-                                    width: 70,
-                                    child: CircleAvatar(
-                                        backgroundImage: AssetImage(("${contacts_Image[index]}"),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 70,
+                                      width: 70,
+                                      child: CircleAvatar(
+                                          backgroundImage: AssetImage(("${contacts_Image[index]}"),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Text("${contacts_Name[index]}",style: TextStyle(fontSize: 15),),
-                                ],
-                              ),
-                            ],
+                                    SizedBox(width: 20,),
+                                    Text("${contacts_Name[index]}",style: TextStyle(fontSize: 15),),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }
-              ),
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      dialog();
-                      txtname.clear();
-                      txtnumber.clear();
-                      f1 = File("");
-                    },
-                    child: Icon(Icons.add),
+                      );
+                    }
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        dialog();
+                        txtname.clear();
+                        txtnumber.clear();
+                        f1 = File("");
+                      },
+                      child: Icon(Icons.add),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )
-       )
+              ],
+            )
+         )
+      ),
     );
   }
   void dialog() {
